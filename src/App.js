@@ -1,28 +1,53 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { compose } from 'redux'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import './App.scss'
+import Dashboard from './components/Dashboard'
+import HeroDetail from './components/HeroDetail'
+import { getList } from './store/actions/HeroesActions'
+import { HeroesList } from './components/HeroesList'
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+	componentWillMount() {
+		const { getList } = this.props
+
+		getList()
+	}
+
+	render() {
+		const { results } = this.props
+
+		return (
+			<BrowserRouter>
+				<div className="App">
+					<div className="layout">
+						<div className="columns">
+							<HeroesList list={results} />
+							<Switch>
+								<Route exact path="/" component={Dashboard} />
+								<Route path="/hero/:id" component={HeroDetail} />
+							</Switch>
+						</div>
+					</div>
+				</div>
+			</BrowserRouter>
+		)
+	}
 }
 
-export default App;
+const mapStateToProps = (state) => {
+	const { HeroesReducer: { results = [] } } = state
+
+	return {
+		results
+	}
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		getList: () => dispatch(getList())
+	}
+}
+
+export default compose(connect(mapStateToProps, mapDispatchToProps))(App)

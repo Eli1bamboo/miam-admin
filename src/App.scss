@@ -1,0 +1,80 @@
+body,
+html,
+#root {
+	height: 100%;
+	min-height: 100%;
+}
+
+.App {
+	height: 100%;
+	background: #f4f4f4;
+
+	.layout {
+		// height: 100%;
+		// display: flex;
+		// flex-direction: column;
+		// align-content: center;
+		// align-items: center;
+
+		.columns {
+			display: flex;
+			flex-direction: row;
+			align-content: center;
+			align-items: stretch;
+			width: 100%;
+			max-width: 75%;
+
+			.heroesList {
+				display: flex;
+				flex-direction: column;
+				align-content: center;
+				align-items: stretch;
+				flex: 1;
+				width: 100%;
+				padding-right: 12px;
+
+				.heroRow {
+					cursor: pointer;
+					text-decoration: none;
+					color: black;
+					padding: 6px;
+					border: 1px solid black;
+					display: flex;
+					flex-direction: row;
+					margin: 6px 0;
+
+					.heroData {
+						flex: 1;
+						padding-left: 12px;
+
+						div {
+							width: 50%;
+							float: left;
+						}
+					}
+					img {
+						margin-right: 12px;
+					}
+
+					p {
+						font-size: 12px;
+					}
+
+					&:hover {
+						border-color: purple;
+						background-color: beige;
+					}
+				}
+			}
+
+			.heroCard {
+				flex: 0;
+
+				.cardHeader {
+					text-align: center;
+					width: 100%;
+				}
+			}
+		}
+	}
+}
