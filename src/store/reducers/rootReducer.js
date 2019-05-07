@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
-import HeroesReducer from './HeroesReducer'
+import recipesReducer from './recipesReducer'
+import massUnitsReducer from './massUnitsReducer'
 
 const rootReducer = combineReducers({
-	HeroesReducer
+	recipesReducer,
+	massUnitsReducer
 })
 
 export default rootReducer

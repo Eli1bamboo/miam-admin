@@ -2,9 +2,9 @@ const initState = {
 	isLoading: false
 }
 
-const HeroesReducer = (state = initState, action) => {
+const massUnitsReducer = (state = initState, action) => {
 	switch (action.type) {
-		case 'GETLIST_ERROR':
+		case 'GET_LIST_ERROR':
 			console.log('error')
 			return {
 				...state,
@@ -12,7 +12,7 @@ const HeroesReducer = (state = initState, action) => {
 				getError: null
 			}
 
-		case 'GETLIST_LOADING':
+		case 'GET_LIST_LOADING':
 			console.log('loading')
 			return {
 				...state,
@@ -20,15 +20,15 @@ const HeroesReducer = (state = initState, action) => {
 				getError: null
 			}
 
-		case 'GETLIST_SUCCESS':
+		case 'GET_LIST_SUCCESS':
 			console.log('success')
 			return {
 				...state,
-				results: action.results,
+				data: action.data,
 				isLoading: false,
 				getError: null
 			}
-		case 'GETHERO_ERROR':
+		case 'GET_RECIPE_DRAFT_ERROR':
 			console.log('error')
 			return {
 				...state,
@@ -36,7 +36,7 @@ const HeroesReducer = (state = initState, action) => {
 				getError: null
 			}
 
-		case 'GETHERO_LOADING':
+		case 'GET_RECIPE_DRAFT_LOADING':
 			console.log('loading')
 			return {
 				...state,
@@ -44,11 +44,11 @@ const HeroesReducer = (state = initState, action) => {
 				getError: null
 			}
 
-		case 'GETHERO_SUCCESS':
+		case 'GET_RECIPE_DRAFT_SUCCESS':
 			console.log('success')
 			return {
 				...state,
-				hero: action.results[0],
+				data: action.data,
 				isLoading: false,
 				getError: null
 			}
@@ -57,4 +57,4 @@ const HeroesReducer = (state = initState, action) => {
 	}
 }
 
-export default HeroesReducer
+export default massUnitsReducer

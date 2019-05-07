@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Dashboard() {
+export default function Dashi() {
 	return (
 		<div>
 			<h1>Marvel API demo</h1>
